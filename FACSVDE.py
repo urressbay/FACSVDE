@@ -24,6 +24,7 @@ print("Panda's Version:", pd.__version__)  #Print Pandas Version
 
 #Import Tkinter
 import tkinter
+import os
 
 #Function: Create a tracker for file load once, filter many
 global dfTrack
@@ -45,8 +46,7 @@ user_output = ""
 #Function:  Preview Data In App Window
 def show_output():
     # Insert the CSV data into the Text widget
-    for row in preview.splitlines(","):
-        output_text.insert("1.0", row + "\n")
+    output_text.insert("1.0", preview)
 
 #Function:  Get Username Prompt
 def get_username():
@@ -191,6 +191,5 @@ filter_by_user_radio.pack(),filter_by_categorydesc_radio.pack(),filter_by_srcIPr
 
 #Starts the GUI app
 window.mainloop()
-
 
 
