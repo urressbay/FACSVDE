@@ -60,6 +60,11 @@ def get_category():
 def get_srcIP():
     return sd.askstring("User Input", "Enter SrcIP:", parent=window)  # Open a dialog box
 
+#Function: Close App
+def closeApp():
+    import sys
+    sys.exit()
+
 #Function: Open file - also change filters
 def Openfile():
     global user_output
@@ -148,7 +153,7 @@ window.geometry("800x600")
 openButton = Button(text="Open Large CSV",command=Openfile)
 
 #GUI Close Button - Closes the app
-closeButton = Button(text="Close This App",command=exit)
+closeButton = Button(text="Close This App",command=closeApp)
 
 #GUI Show Button - Displays the preview text
 showButton = Button(text="Show Sample CSV Ouput",command=show_output)
