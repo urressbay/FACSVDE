@@ -10,8 +10,10 @@ I needed a solution to review monthly weblogs that are being captured by FortiAn
 #This is my 1st attempt at creating a Python program, so please be kind. Constructive feedback is welcome!
 
 #Key Features:
-  Read and analyze large exported logs from fortianalizer, select and open a large file, and let it do the heavy lifting.
-  Preview - 10 rows of selected filtered data before exporting.
-  Click the load file again, without having to wait for the data to change category or user info!
-  Find what the users have been up to by user name.
-  Searching by category displays in the console a list of all unique categories found.
+  *Read and analyze large exported logs from fortianalizer, select and open a large file, and let it do the heavy lifting.
+  *Preview - 10 rows of selected filtered data before exporting.
+  *Click the load file again, without having to wait for the data to change category or user info!
+  *Find what the users have been up to by user name.
+  *Searching by category displays in the console a list of all unique categories found.
+
+#Usernames should be in ALL CAPS!  The problem is that computer accounts have the 1st part lowered...still working on creating an exception for workstation names.
