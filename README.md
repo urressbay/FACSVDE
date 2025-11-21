@@ -1,21 +1,17 @@
 # FACSVDE
-FortiAnalyzer CSV Data Explorer
-
+FortiAnalyzer CSV Data Explorer - Specifically, large web filter logs exported from FortiAnalyzer. 
 
 #Introducing FortiAnalyzer CSV Data Explorer (FACSVDE)
 
-#Are you tired of manually sifting through massive amounts of log data from your FortiAnalyzer? Do you 
-#wish you had an easier way to analyze and visualize and export small specific subsets of the large datasets, so you can quickly identify trends, 
-#patterns, and potential security threats?
+#Problem:
 
-#Look no further! This tool is designed specifically for reading and analyzing FortiAnalyzer 
-#exported data - perfect for managing and monitoring your network's activity over a specific period of 
-#time. Whether it's a week's worth of data or a month's worth, our app makes it easy to navigate and 
-#extract insights from large datasets.  Fortianalyzer exports top out at 5 million rows.  
+I needed a solution to review monthly weblogs that are being captured by FortiAnalyzer.  One of the limitations of it is 5 million rows.  So when trying to run a report for the month, I was not getting all the data.  So I started to extract all of the data weekly, as this is under the 5 million row limit.  The problem is that the files are too large for Excel to read, and creating multiple different unique filters and creating multiple reports was cumbersome, thus the creation of FACSVDE.  This tool imports an extracted webfilter extract for a week, and allows me to slice and dice the data based on user, category or source IP address.  It also allows me to preview the data prior to exporting the smaller files needed for audit purposes.  For example, who clicked what in the phishing category?  Then switch it to what else did that IP click on?  What about my admin accounts, why are they browsing the web with elevated privileges?  I was able to find this and more very quickly thanks to the power of python pandas.  
+
+#This is my 1st attempt at creating a Python program, so please be kind. Constructive feedback is welcome!
 
 #Key Features:
-#Read and analize large exported logs from fortianalizer, and select open large file and let it do the heavy lifting.
-#Preview - 10 rows of selected filtered data prior to exporting.
-#Click load file again, without having to wait for the data to change category or user info!
-#Find what the users have been up to by user name.
-#Searching by category displays in the console a list of all unquie categories found.
+  Read and analyze large exported logs from fortianalizer, select and open a large file, and let it do the heavy lifting.
+  Preview - 10 rows of selected filtered data before exporting.
+  Click the load file again, without having to wait for the data to change category or user info!
+  Find what the users have been up to by user name.
+  Searching by category displays in the console a list of all unique categories found.
