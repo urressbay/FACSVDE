@@ -71,8 +71,8 @@ def Openfile():
     global preview
     global cat_filter
     global dfTrack
-
-
+    global all_header
+    all_header = ""
     #Load Selected file one time:
     if dfTrack == None:
         filepath = filedialog.askopenfilename()
@@ -82,10 +82,24 @@ def Openfile():
         df = pd.read_csv(filepath,sep=',',dtype='unicode',index_col=False)
         dfTrack = 1
     #for row labeling - check the output of columns
-    print(df.columns)
-
+    print(df.columns) #prints the index
+    colsplit = ",".join(df.columns)  #Splits the index into values as a string
+    print(colsplit) #prints the new string
+    colsplit = colsplit.split(",")
+    for col in colsplit:
+        #print(f"Processing: {col}")
+        col_header = col.split("=")
+        col_header = col_header[0]
+        all_header +=  col_header  + ","
+    print("All Headers:")
+    all_header = all_header[:-1]
+    #all_header = all_header + "]"
+    print(all_header)
+    
+    
     #Define Column Headers for Webfilter Results File:
-    df.columns = ["itime","date","time","devid","vd","type","subtype","action","agent","authserver","bid","cat","catdesc","unnamed:13","unnamed:14","unnamed:15","devname","direction","dstcountry","dstepid","dsteuid","dstintf","dstintfrole","dstip","dstport","dstuuid","dvid","epid","euid","unname:28","eventtime","eventtype","Unnamed:32","unnamed:33","hostname","httpmethod","id","level","logid","logver","msg","policyid","policytype","poluuid","profile","proto","reatemethod","rcvdbyte","referenalurl","reqtype","sentbyte","service","sessionid","srccountry","unnamed:54","srcintf","srcintfrole","srcip","srcport","srcuuid","tz","unnamed:61","unnamed:62","url","unnamed64","unnamed65","unnamed66","user"]
+    #df.columns = ["itime","date","time","devid","vd","type","subtype","action","agent","authserver","bid","cat","catdesc","unnamed:13","unnamed:14","unnamed:15","devname","direction","dstcountry","dstepid","dsteuid","dstintf","dstintfrole","dstip","dstport","dstuuid","dvid","epid","euid","unname:28","eventtime","eventtype","Unnamed:32","unnamed:33","hostname","httpmethod","id","level","logid","logver","msg","policyid","policytype","poluuid","profile","proto","reatemethod","rcvdbyte","referenalurl","reqtype","sentbyte","service","sessionid","srccountry","unnamed:54","srcintf","srcintfrole","srcip","srcport","srcuuid","tz","unnamed:61","unnamed:62","url","unnamed64","unnamed65","unnamed66","user"]
+    df.columns = all_header.split(",")
     #Samples of failed ones:
     #df = pd.read_csv(filepath,sep=',',dtype="unicode",index_col=["itime", 'date', 'time','devid', 'vd', 'type','subtype','action','agent','authserver','bid', 'cat','catdesc', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15','devname','direction','dstcountry', 'dstepid', 'dsteuid','dstintf', 'dstintfrole', 'dstip','dstport', 'dstuuid','dvid', 'epid','Unnamed: 28', 'euid','eventtime', 'eventtype','Unnamed: 32', 'Unnamed: 33', 'hostname','httpmethod','id','level','logid', 'logver','msg=', 'policyid','policytype','poluuid','profile', 'proto', 'ratemethod', 'rcvdbyte','referralurl', 'reqtype','sentbyte', 'service', 'sessionid','srccountry', 'Unnamed', 'srcintf','srcintfrole', 'srcip', 'srcport','srcuuid', 'tz','Unnamed: 61', 'Unnamed: 62','url','Unnamed: 64','Unnamed: 65','Unnamed: 66', 'user'])
     #df.columns=["itime", 'date', 'time','devid', 'vd', 'type','subtype','action','agent','authserver','bid', 'cat','catdesc', 'Unnamed: 13', 'Unnamed: 14', 'Unnamed: 15','devname','direction','dstcountry', 'dstepid', 'dsteuid','dstintf', 'dstintfrole', 'dstip','dstport', 'dstuuid','dvid', 'epid','Unnamed: 28', 'euid','eventtime', 'eventtype','Unnamed: 32', 'Unnamed: 33', 'hostname','httpmethod','id','level','logid', 'logver','msg=', 'policyid','policytype','poluuid','profile', 'proto', 'ratemethod', 'rcvdbyte','referralurl', 'reqtype','sentbyte', 'service', 'sessionid','srccountry', 'Unnamed', 'srcintf','srcintfrole', 'srcip', 'srcport','srcuuid', 'tz','Unnamed: 61', 'Unnamed: 62','url','Unnamed: 64','Unnamed: 65','Unnamed: 66', 'user']
